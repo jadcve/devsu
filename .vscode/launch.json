@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-CustomerApplication<test>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.devsu.customer.CustomerApplication",
+            "projectName": "test",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=54352 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=test"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-AccountApplication<account>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.devsu.account.AccountApplication",
+            "projectName": "account",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
