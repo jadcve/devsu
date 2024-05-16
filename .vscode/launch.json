@@ -20,6 +20,26 @@
             "projectName": "account",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-CustomerApplication<com.alain.devsu.backend-test>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.devsu.customer.CustomerApplication",
+            "projectName": "com.alain.devsu.backend-test",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-AccountApplication<com.devsu.account-test>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.devsu.account.AccountApplication",
+            "projectName": "com.devsu.account-test",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
