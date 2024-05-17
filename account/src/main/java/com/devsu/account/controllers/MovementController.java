@@ -21,6 +21,10 @@ public class MovementController {
     @Autowired
     private MovementServiceImp movementServiceImp;
 
+    public MovementController(MovementServiceImp movementServiceImp) {
+        this.movementServiceImp = movementServiceImp;
+    }
+
     @GetMapping
     public List<Movement> getAllMovements() {
         return movementServiceImp.getAllMovements();
@@ -44,16 +48,6 @@ public class MovementController {
     @DeleteMapping("/{id}")
     public void deleteMovement(@PathVariable("id") Long id) {
         movementServiceImp.deleteMovement(id);
-    }
-
-    @GetMapping("/reportes")
-    public ResponseEntity<List<AccountStatementReport>> getAccountStatements(
-            @RequestParam("fechaInicio") @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
-            @RequestParam("fechaFin") @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate,
-            @RequestParam("clienteId") Long clientId) {
-
-        List<AccountStatementReport> reports = movementServiceImp.getAccountStatements(startDate, endDate, clientId);
-        return ResponseEntity.ok(reports);
     }
 
     private ResponseEntity<?> validation(BindingResult result) {
