@@ -1,5 +1,6 @@
 package com.devsu.customer.controllers;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ import com.devsu.customer.services.impl.CustomerServiceImp;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("api/clientes")
+@RequestMapping("/clientes")
 public class CustomerController {
 
     @Autowired
@@ -45,9 +46,9 @@ public class CustomerController {
     }
 
     @GetMapping("/listar")
-    public ResponseEntity<Customer> listCustomer() {
-        Customer customer = customerServiceImp.listarCustomer();
-        return ResponseEntity.ok(customer);
+    public ResponseEntity<List<Customer>> listCustomer() {
+        List<Customer> customers = customerServiceImp.listarCustomer();
+        return ResponseEntity.ok(customers);
     }
 
 

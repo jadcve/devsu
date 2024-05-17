@@ -1,6 +1,9 @@
 package com.devsu.customer.services.impl;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -87,10 +90,12 @@ public class CustomerServiceImp implements CustomerService{
         customerRepository.delete(customer);
     }
 
-    @Override
     @Transactional
-    public Customer listarCustomer() {
-        return (Customer) customerRepository.findAll();
+    public List<Customer> listarCustomer() {
+        Iterable<Customer> customersIterable = customerRepository.findAll();
+        List<Customer> customers = StreamSupport.stream(customersIterable.spliterator(), false)
+                                                 .collect(Collectors.toList());
+        return customers;
     }
 
     private CustomerResponseDTO convertToDto(Customer customer) {

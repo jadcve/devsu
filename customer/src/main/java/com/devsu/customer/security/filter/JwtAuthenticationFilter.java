@@ -34,31 +34,31 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         this.authenticationManager = authenticationManager;
     }
 
-    // @Override
-    // public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
-    //         throws AuthenticationException {
+    @Override
+    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
+            throws AuthenticationException {
 
-    //     Account user = null;
-    //     String username = null;
-    //     String password = null;
+        Customer user = null;
+        String username = null;
+        String password = null;
 
-    //     try {
-    //         user = new ObjectMapper().readValue(request.getInputStream(), Customer.class);
-    //         username = user.getIdentificacion();
-    //         password = user.getContrasena();
-    //     } catch (StreamReadException e) {
-    //         e.printStackTrace();
-    //     } catch (DatabindException e) {
-    //         e.printStackTrace();
-    //     } catch (IOException e) {
-    //         e.printStackTrace();
-    //     }
+        try {
+            user = new ObjectMapper().readValue(request.getInputStream(), Customer.class);
+            username = user.getIdentificacion();
+            password = user.getContrasena();
+        } catch (StreamReadException e) {
+            e.printStackTrace();
+        } catch (DatabindException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-    //     UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username,
-    //             password);
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username,
+                password);
 
-    //     return authenticationManager.authenticate(authenticationToken);
-    // }
+        return authenticationManager.authenticate(authenticationToken);
+    }
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,

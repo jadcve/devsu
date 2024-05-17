@@ -15,7 +15,8 @@ public class CustomerAccount {
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private long id;
+    private Long id;
+    
     private long accountId;
     
     @JsonIgnore

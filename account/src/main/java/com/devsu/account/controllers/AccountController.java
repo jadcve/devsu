@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping("/api/accounts")
+@RequestMapping("/cuentas")
 public class AccountController {
 
     @Autowired

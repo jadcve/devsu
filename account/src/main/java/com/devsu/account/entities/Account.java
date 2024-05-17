@@ -20,12 +20,11 @@ public class Account {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
+    
     private String tipo;
     private String numero;
     private Double saldo;
     private boolean estado;
-
-
 
 
 }
