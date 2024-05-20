@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -27,7 +29,8 @@ public class Person {
     @NotEmpty
     private String nombre;
 
-    private String genero;
+    @Enumerated(EnumType.STRING)
+    private Genero genero;
 
     private int edad;
 
@@ -43,7 +46,7 @@ public class Person {
     @Embedded
     private Audit audit = new Audit();
 
-    public Person(String nombre, String genero, int edad, String identificacion, String direccion, String telefono) {
+    public Person(String nombre, Genero genero, int edad, String identificacion, String direccion, String telefono) {
         this.nombre = nombre;
         this.genero = genero;
         this.edad = edad;

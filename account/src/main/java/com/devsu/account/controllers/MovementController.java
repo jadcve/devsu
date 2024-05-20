@@ -30,22 +30,22 @@ public class MovementController {
         return movementServiceImp.getAllMovements();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/obtener/{id}")
     public Movement getMovementById(@PathVariable("id") Long id) {
         return movementServiceImp.getMovementById(id);
     }
 
-    @PostMapping
+    @PostMapping("/crear/{id}")
     public Movement createMovement(@RequestBody Movement movement) {
         return movementServiceImp.createMovement(movement);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/actualizar/{id}")
     public Movement updateMovement(@PathVariable("id") Long id, @RequestBody Movement movement) {
         return movementServiceImp.updateMovement(id, movement);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public void deleteMovement(@PathVariable("id") Long id) {
         movementServiceImp.deleteMovement(id);
     }
@@ -62,7 +62,6 @@ public class MovementController {
 
     @ControllerAdvice
     class GlobalExceptionHandler {
-
         @ExceptionHandler(InsufficientBalanceException.class)
         public ResponseEntity<String> handleInsufficientBalanceException(InsufficientBalanceException ex, WebRequest request) {
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);

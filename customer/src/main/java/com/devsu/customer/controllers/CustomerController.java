@@ -52,19 +52,19 @@ public class CustomerController {
     }
 
 
-    @GetMapping("/{id}")
+    @GetMapping("/obtener/{id}")
     public ResponseEntity<Customer> getCustomer(@PathVariable Long id) {
         Customer customer = customerServiceImp.getCustomer(id);
         return ResponseEntity.ok(customer);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/actualizar/{id}")
      public ResponseEntity<CustomerResponseDTO> updateCustomer(@PathVariable Long id, @Valid @RequestBody CustomerInputDTO customerDetails) {
         CustomerResponseDTO updatedCustomer = customerServiceImp.updateCustomer(id, customerDetails);
         return ResponseEntity.ok(updatedCustomer);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<?> deleteCustomer(@PathVariable Long id) {
         customerServiceImp.deleteCustomer(id);
         return ResponseEntity.ok().build();

@@ -1,4 +1,6 @@
 package com.devsu.customer.dtos;
+import com.devsu.customer.entities.Genero;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CustomerInputDTO {
     private String nombre;
-    private String genero;
+    private Genero genero;
     private int edad;
     private String identificacion;
     private String direccion;

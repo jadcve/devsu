@@ -23,9 +23,10 @@ import lombok.Setter;
 public class Customer extends Person {
     @Column(unique = true)
     private int customerId;
-    private String contrasena;
-    private boolean estado;
 
+    private String contrasena;
+
+    private boolean estado;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CustomerAccount> accounts = new ArrayList<>();
@@ -34,7 +35,7 @@ public class Customer extends Person {
     private List<?> transactions;
 
    @Builder
-    public Customer(String nombre, String genero, int edad, String identificacion, String direccion, String telefono, int customerId, String contrasena, boolean estado, List<CustomerAccount> accounts, List<?> transactions) {
+    public Customer(String nombre, Genero genero, int edad, String identificacion, String direccion, String telefono, int customerId, String contrasena, boolean estado, List<CustomerAccount> accounts, List<?> transactions) {
         super(nombre, genero, edad, identificacion, direccion, telefono);
         this.customerId = customerId;
         this.contrasena = contrasena;
