@@ -1,13 +1,11 @@
 package com.devsu.account.controllers;
 
-import com.devsu.account.dtos.AccountStatementReport;
 import com.devsu.account.entities.Movement;
 import com.devsu.account.services.impl.MovementServiceImp;
 import com.devsu.account.validations.InsufficientBalanceException;
 
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;

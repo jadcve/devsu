@@ -102,9 +102,11 @@ public class MovementServiceImp implements MovementService {
         movementRepository.deleteById(id);
     }
 
-  @Override
+    @Override
     public List<AccountStatementReport> getAccountStatements(Date startDate, Date endDate, Long clientId) {
         CustomerDTO customer = customerServiceClient.getCustomerById(clientId);
+
+        System.out.println("Customer: " + customer); // Debugging
 
         List<AccountStatementReport> reports = new ArrayList<>();
 
@@ -112,7 +114,11 @@ public class MovementServiceImp implements MovementService {
             Account account = accountRepository.findById(customerAccount.getAccountId())
                 .orElseThrow(() -> new IllegalArgumentException("Account not found"));
 
+                System.out.println("Account: " + account); // Debugging
+
             List<Movement> movements = movementRepository.findByAccountAndFechaBetween(account, startDate, endDate);
+
+            System.out.println("Movements: " + movements); // Debugging
 
             List<AccountStatementReport.MovementDetail> movementDetails = movements.stream().map(movement -> {
                 AccountStatementReport.MovementDetail detail = new AccountStatementReport.MovementDetail();
@@ -133,5 +139,6 @@ public class MovementServiceImp implements MovementService {
 
         return reports;
     }
+    
     
 }

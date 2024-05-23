@@ -45,8 +45,7 @@ public class AccountController {
         return ResponseEntity.status(HttpStatus.CREATED).body(accountRegister);
     }
 
-    //crea los otros metodos para el crud
-    @GetMapping("/{id}")
+    @GetMapping("/obtener/{id}")
     public ResponseEntity<?> getAccountById(@PathVariable Long id) {
         Account account = accountServiceImp.getAccountById(id);
         if (account == null) {
@@ -55,7 +54,7 @@ public class AccountController {
         return ResponseEntity.ok(account);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/editar/{id}")
     public ResponseEntity<?> updateAccount(@PathVariable Long id, @Valid @RequestBody Account account, BindingResult result) {
         if (result.hasFieldErrors()) {
             return validation(result);
@@ -67,7 +66,7 @@ public class AccountController {
         return ResponseEntity.ok(updatedAccount);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public void deleteAccount(@PathVariable Long id) {
         accountServiceImp.deleteAccount(id);
     }

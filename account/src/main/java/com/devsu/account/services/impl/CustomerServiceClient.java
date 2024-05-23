@@ -18,7 +18,9 @@ public class CustomerServiceClient {
     private String customerServiceUrl;
 
     public CustomerDTO getCustomerById(Long customerId) {
-        String url = customerServiceUrl + "/clientes/" + customerId;
-        return restTemplate.getForObject(url, CustomerDTO.class);
+        String url = customerServiceUrl + "/clientes/obtener/" + customerId;
+        CustomerDTO customerDTO = restTemplate.getForObject(url, CustomerDTO.class);
+        System.out.println("CustomerDTO: " + customerDTO); // Debugging
+        return customerDTO;
     }
 }

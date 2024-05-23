@@ -1,6 +1,5 @@
 package com.devsu.customer.controllers;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,16 +44,10 @@ public class CustomerController {
         return ResponseEntity.status(HttpStatus.CREATED).body(customerRegister);
     }
 
-    @GetMapping("/listar")
-    public ResponseEntity<List<Customer>> listCustomer() {
-        List<Customer> customers = customerServiceImp.listarCustomer();
-        return ResponseEntity.ok(customers);
-    }
-
 
     @GetMapping("/obtener/{id}")
-    public ResponseEntity<Customer> getCustomer(@PathVariable Long id) {
-        Customer customer = customerServiceImp.getCustomer(id);
+    public ResponseEntity<CustomerResponseDTO> getCustomer(@PathVariable Long id) {
+        CustomerResponseDTO customer = customerServiceImp.getCustomer(id);
         return ResponseEntity.ok(customer);
     }
 
