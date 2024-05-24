@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  account-db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: db_account
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: alain1982
+    ports:
+      - "5432:5432"
+    volumes:
+      - account-db-data:/var/lib/postgresql/data
+
+  customer-db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: passw
+      MYSQL_DATABASE: db_customer
+      MYSQL_USER: alain
+      MYSQL_PASSWORD: alain.123
+    ports:
+      - "33006:3306"
+    volumes:
+      - customer-db-data:/var/lib/mysql
+
+  account-service:
+    build:
+      context: ./account
+      dockerfile: Dockerfile.account
+    ports:
+      - "8082:8081"
+    depends_on:
+      - account-db
+
+  customer-service:
+    build:
+      context: ./customer
+      dockerfile: Dockerfile.customer
+    ports:
+      - "8080:8080"
+    depends_on:
+      - customer-db
+
+volumes:
+  account-db-data:
+  customer-db-data:
